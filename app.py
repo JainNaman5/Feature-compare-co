@@ -1,6 +1,5 @@
 from flask import Flask, request
 from flask import Flask, jsonify
-from flask import Flask, render_template
 from flask_cors import CORS
 import requests
 from bs4 import BeautifulSoup
@@ -94,12 +93,6 @@ def scrape_features(url):
         return {'error': f'Error scraping {url}: {str(e)}'}
 
 
-
-app = Flask(__name__)
-
-@app.route('/')
-def home():
-    return render_template('index.html')
 
 @app.route('/compare', methods=['POST'])
 def compare():
