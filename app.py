@@ -131,18 +131,29 @@ def home():
         }
     })
 
-@app.route('/meta', methods=['GET'])
-def get_meta():
-    data = {
+# @app.route('/meta', methods=['GET'])
+# def get_meta():
+#     data = {
+#         "endpoints": {
+#             "/compare": "POST - Compare features from two URLs",
+#             "/health": "GET - Health check"
+#         },
+#         "name": "Universal Feature Comparator API",
+#         "version": "1.1.0"
+#     }
+#     return jsonify(data)
+@app.route('/meta')
+def meta():
+    return jsonify({
         "endpoints": {
-            "/compare": "POST - Compare features from two URLs",
-            "/health": "GET - Health check"
+            "compare": "POST - Compare features from two URLs",
+            "health": "GET - Health check"
         },
         "name": "Universal Feature Comparator API",
-        "version": "1.1.0"
-    }
-    return jsonify(data)
+        "version": "1.0.0"
+    })
 
 if __name__ == '__main__':
     logger.info("Starting Universal Feature Comparator API...")
     app.run(debug=True, host='0.0.0.0', port=5000)
+
