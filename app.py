@@ -6,7 +6,7 @@ import logging
 from flask.json.provider import DefaultJSONProvider
 
 app = Flask(__name__)
-DefaultJSONProvider.compact = True
+app.json_provider_class.compact = True
 
 
 CORS(app)
@@ -148,3 +148,4 @@ def meta():
 if __name__ == '__main__':
     logger.info("Starting Universal Feature Comparator API...")
     app.run(debug=True, host='0.0.0.0', port=5000)
+
