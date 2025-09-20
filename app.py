@@ -1,11 +1,14 @@
-from flask import Flask, request
-from flask import Flask, jsonify
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
 from bs4 import BeautifulSoup
 import logging
+from flask.json.provider import DefaultJSONProvider
 
 app = Flask(__name__)
+DefaultJSONProvider.compact = True
+
+
 CORS(app)
 
 # Logging setup
@@ -92,8 +95,6 @@ def scrape_features(url):
         logger.error(f"Scraping error: {e}")
         return {'error': f'Error scraping {url}: {str(e)}'}
 
-
-
 @app.route('/compare', methods=['POST'])
 def compare():
     data = request.get_json()
@@ -120,41 +121,30 @@ def compare():
 def health_check():
     return jsonify({'status': 'healthy', 'message': 'API is running'})
 
-# @app.route('/', methods=['GET'])
-# def home():
-#     return jsonify({
-#         'name': 'Universal Feature Comparator API',
-#         'version': '1.1.0',
-#         'endpoints': {
-#             '/compare': 'POST - Compare features from two URLs',
-#             '/health': 'GET - Health check'
-#         }
-#     })
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({
+        'name': 'Universal Feature Comparator API',
+        'version': '1.1.0',
+        'endpoints': {
+            '/compare': 'POST - Compare features from two URLs',
+            '/health': 'GET - Health check'
+        }
+    })
 
-# @app.route('/meta', methods=['GET'])
-# def get_meta():
-#     data = {
-#         "endpoints": {
-#             "/compare": "POST - Compare features from two URLs",
-#             "/health": "GET - Health check"
-#         },
-#         "name": "Universal Feature Comparator API",
-#         "version": "1.1.0"
-#     }
-#     return jsonify(data)
-# @app.route('/meta')
-# def meta():
-#     return jsonify({
-#         "endpoints": {
-#             "compare": "POST - Compare features from two URLs",
-#             "health": "GET - Health check"
-#         },
-#         "name": "Universal Feature Comparator API",
-#         "version": "1.0.0"
-#     })
+
+
+@app.route('/meta')
+def meta():
+    return jsonify({
+        "endpoints": {
+            "compare": "POST - Compare features from two URLs",
+            "health": "GET - Health check"
+        },
+        "name": "Universal Feature Comparator API",
+        "version": "1.0.0"
+    })
 
 if __name__ == '__main__':
     logger.info("Starting Universal Feature Comparator API...")
     app.run(debug=True, host='0.0.0.0', port=5000)
-
-
