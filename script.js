@@ -194,4 +194,12 @@ function displayResults(data) {
 
     // Scroll to results
     resultsSection.scrollIntoView({ behavior: 'smooth' });
+
+}
+
+function showJsonOutput(data) {
+  const outputSection = document.getElementById('json-output-section');
+  const outputBox = document.getElementById('json-output');
+  outputBox.textContent = JSON.stringify(data, null, 2); // Pretty print
+  outputSection.classList.remove('hidden');
 }
