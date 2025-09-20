@@ -145,8 +145,9 @@ def meta():
         "version": "1.0.0"
     })
 
-if __name__ == '__main__':
-    logger.info("Starting Universal Feature Comparator API...")
-    app.run(debug=True, host='0.0.0.0', port=5000)
+# if __name__ == '__main__':
+#     logger.info("Starting Universal Feature Comparator API...")
+#     app.run(debug=True, host='0.0.0.0', port=5000)
+
 
 
