@@ -120,16 +120,16 @@ def compare():
 def health_check():
     return jsonify({'status': 'healthy', 'message': 'API is running'})
 
-@app.route('/', methods=['GET'])
-def home():
-    return jsonify({
-        'name': 'Universal Feature Comparator API',
-        'version': '1.1.0',
-        'endpoints': {
-            '/compare': 'POST - Compare features from two URLs',
-            '/health': 'GET - Health check'
-        }
-    })
+# @app.route('/', methods=['GET'])
+# def home():
+#     return jsonify({
+#         'name': 'Universal Feature Comparator API',
+#         'version': '1.1.0',
+#         'endpoints': {
+#             '/compare': 'POST - Compare features from two URLs',
+#             '/health': 'GET - Health check'
+#         }
+#     })
 
 # @app.route('/meta', methods=['GET'])
 # def get_meta():
@@ -142,18 +142,19 @@ def home():
 #         "version": "1.1.0"
 #     }
 #     return jsonify(data)
-@app.route('/meta')
-def meta():
-    return jsonify({
-        "endpoints": {
-            "compare": "POST - Compare features from two URLs",
-            "health": "GET - Health check"
-        },
-        "name": "Universal Feature Comparator API",
-        "version": "1.0.0"
-    })
+# @app.route('/meta')
+# def meta():
+#     return jsonify({
+#         "endpoints": {
+#             "compare": "POST - Compare features from two URLs",
+#             "health": "GET - Health check"
+#         },
+#         "name": "Universal Feature Comparator API",
+#         "version": "1.0.0"
+#     })
 
 if __name__ == '__main__':
     logger.info("Starting Universal Feature Comparator API...")
     app.run(debug=True, host='0.0.0.0', port=5000)
+
 
