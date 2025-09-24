@@ -1,3 +1,4 @@
+#Original code
 # from flask import Flask, request, jsonify
 # from flask_cors import CORS
 # import requests
@@ -147,7 +148,9 @@
 
 
 
-
+"""
+Amazon and flipkart usage
+"""
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import logging
@@ -292,6 +295,7 @@ def meta():
 # # if __name__ == '__main__':
 # #     logger.info("Starting Universal Feature Comparator API...")
 # #     app.run(debug=True, host='0.0.0.0', port=5000)
+
 
 
 
