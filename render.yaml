@@ -1,0 +1,2 @@
+buildCommand: ./build.sh
+startCommand: gunicorn Scraper2.0_app:app
