@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
+pip install --upgrade pip
 pip install -r requirements.txt
-playwright install
+python -m playwright install
